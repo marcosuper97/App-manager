@@ -27,17 +27,18 @@ fun MainScreen(name: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun AppCard(modifier: Modifier = Modifier) {
-    Card(modifier
-        .fillMaxWidth()
-        .height(60.dp),
-        ) {
+    Card(
+        modifier
+            .fillMaxWidth()
+            .height(60.dp),
+    ) {
         Row {
         }
     }
 }
 
 @Composable
-fun AppIcon(modifier: Modifier, app: AppModel){
+fun AppIcon(modifier: Modifier, app: AppModel) {
     Image(
         painter = BitmapPainter(app.icon.toBitmap().asImageBitmap()),
         contentDescription = "Иконка приложения ${app.name}",
