@@ -62,4 +62,5 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.androidx.material.icons.extended)
     ksp(libs.moshi.kotlin.codegen)
+    implementation(libs.androidx.ui.text.google.fonts)
 }
