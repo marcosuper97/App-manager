@@ -1,4 +1,4 @@
-package com.example.appmanager
+package com.example.appmanager.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
