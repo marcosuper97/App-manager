@@ -63,4 +63,5 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     ksp(libs.moshi.kotlin.codegen)
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation("io.insert-koin:koin-androidx-compose:4.1.0")
 }

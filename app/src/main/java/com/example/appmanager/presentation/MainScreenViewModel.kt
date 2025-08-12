@@ -14,13 +14,9 @@ class MainScreenViewModel(
     val screenState: StateFlow<MainScreenState> get() = _screenState
 
     init {
-        viewModelScope.launch{
+        viewModelScope.launch {
             appsInteractor.fetchData().collect { data ->
-                when {
-                    data.isEmpty() -> _screenState.value = MainScreenState.IsEmpty
-                    !data.isEmpty() -> _screenState.value = MainScreenState.Content(data)
-                    else -> _screenState.value = MainScreenState.Error
-                }
+                _screenState.value = MainScreenState.Content(data)
             }
         }
     }

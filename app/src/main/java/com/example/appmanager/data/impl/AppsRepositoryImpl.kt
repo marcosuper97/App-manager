@@ -51,6 +51,9 @@ class AppsRepositoryImpl(
 
     private fun fetchApplicationInfo(): List<ApplicationInfo> {
         return packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+            .filter { appInfo ->
+                (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
+            }
     }
 
     private fun ApplicationInfo.mapToModel(): AppModel {
@@ -61,7 +64,7 @@ class AppsRepositoryImpl(
             packageName = packageName,
             version = getPackageVersion(),
             icon = loadIcon(packageManager),
-            checkSum = calcChecksum(sourceDir,SHA_256)
+            checkSum = calcChecksum(sourceDir, SHA_256)
         )
     }
 
@@ -87,7 +90,7 @@ class AppsRepositoryImpl(
 
     override fun getInstalledApplications(): Flow<List<AppModel>> = appsFlow
 
-    companion object{
+    companion object {
         private const val BUFFER_SIZE = 8192
         private const val SHA_256 = "SHA-256"
     }
