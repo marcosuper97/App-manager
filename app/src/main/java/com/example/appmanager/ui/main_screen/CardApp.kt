@@ -63,11 +63,14 @@ fun AppCard(
             )
 
             Column(modifier.padding(horizontal = 8.dp)) {
-                Text(appInfo.name,
+                Text(
+                    appInfo.name,
                     style = AppTypography.titleMedium
                 )
-                Text(appInfo.version.toString(),
-                    style = AppTypography.labelMedium)
+                Text(
+                    appInfo.version.toString(),
+                    style = AppTypography.labelMedium
+                )
             }
         }
     }

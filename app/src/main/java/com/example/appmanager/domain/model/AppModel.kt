@@ -1,7 +1,6 @@
 package com.example.appmanager.domain.model
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.drawable.toDrawable
 
@@ -11,7 +10,7 @@ data class AppModel(
     val version: String?,
     val icon: Drawable,
     val checkSum: String
-){
+) {
     companion object {
         // Создаем простой Drawable для тестов
         private val mockIcon = Color.BLUE.toDrawable()
