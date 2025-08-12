@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">App manager</string>
+    <string name="version">Версия:</string>
+    <string name="package_app">Пакет:</string>
+    <string name="check_sum">Контрольная сумма:</string>
+    <string name="unknown_data">Unknown</string>
+    <string name="launch_app">Запустить</string>
+    <string name="back_button">Кнопка назад</string>
+    <string name="app_details">Детали приложения</string>
+    <string name="loading_data">Загрузка данных…</string>
+    <string name="fraze_first">Проверяем данные</string>
+    <string name="fraze_second">Обращаемся к хранилищу</string>
+    <string name="fraze_third">Еще чуть-чуть!</string>
 </resources>
