@@ -30,21 +30,14 @@ import com.example.appmanager.util.toBitmap
 
 @Composable
 fun AppCard(
-    modifier: Modifier = Modifier.padding(
-        horizontal = 8.dp,
-        vertical = 4.dp
-    ),
+    modifier: Modifier = Modifier,
     appInfo: AppModel,
-//    onCardClick: () -> Unit
 ) {
     OutlinedCard(
         modifier
             .fillMaxWidth()
             .height(82.dp)
-//            .clickable(
-//                true,
-//                onClick = onCardClick
-//            )
+            .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

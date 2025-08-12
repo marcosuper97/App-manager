@@ -1,4 +1,4 @@
-package com.example.appmanager.presentation
+package com.example.appmanager.presentation.main_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
