@@ -12,11 +12,8 @@ class AppDetailsInteractorImpl(
     private val appLauncherRepository: AppLauncherRepository
 ) : AppDetailsInteractor {
     override suspend fun getDetails(packageName: String): AppModel? {
-        Log.d("packageName", packageName)
         val appsList = appsRepository.getInstalledApplications().first()
-        Log.d("appsList", appsList.toString())
         val app = appsList.find { it.packageName == packageName }
-        Log.d("ПРИЛОЖЕНИЕ", app.toString())
         return app
     }
 

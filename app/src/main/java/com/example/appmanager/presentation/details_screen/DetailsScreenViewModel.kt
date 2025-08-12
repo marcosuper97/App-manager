@@ -20,7 +20,7 @@ class DetailsScreenViewModel(
             val appData = appDetailsInteractor.getDetails(packageName)
             if (appData != null) {
                 _screenState.value = DetailsScreenState.Content(appData)
-            } else Log.d("ОШИБКА", "VAIVAIVAI")
+            }
         }
     }
 
