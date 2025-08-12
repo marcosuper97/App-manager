@@ -5,4 +5,6 @@
     <string name="check_sum">Контрольная сумма:</string>
     <string name="unknown_data">Unknown</string>
     <string name="launch_app">Запустить</string>
+    <string name="back_button">Кнопка назад</string>
+    <string name="app_details">Детали приложения</string>
 </resources>

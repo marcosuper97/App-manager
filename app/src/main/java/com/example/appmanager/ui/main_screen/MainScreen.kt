@@ -37,7 +37,7 @@ fun MainScreen(
     val scope = rememberCoroutineScope()
     val onCardClick: (String) -> Unit = { packageName ->
         scope.launch {
-            navController.navigate("details/${packageName}")
+            navController.navigate("detailsScreen/$packageName")
         }
     }
     val state by viewModel.screenState.collectAsStateWithLifecycle()
