@@ -1,6 +1,5 @@
 package com.example.appmanager.domain.impl
 
-import android.util.Log
 import com.example.appmanager.domain.api.AppDetailsInteractor
 import com.example.appmanager.domain.api.AppLauncherRepository
 import com.example.appmanager.domain.api.AppsRepository
