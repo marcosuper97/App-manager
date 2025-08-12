@@ -35,16 +35,11 @@ fun AppCard(
         vertical = 4.dp
     ),
     appInfo: AppModel,
-//    onCardClick: () -> Unit
 ) {
     OutlinedCard(
         modifier
             .fillMaxWidth()
             .height(82.dp)
-//            .clickable(
-//                true,
-//                onClick = onCardClick
-//            )
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

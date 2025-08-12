@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">App manager</string>
+    <string name="version">Версия:</string>
+    <string name="package_app">Пакет:</string>
+    <string name="check_sum">Контрольная сумма:</string>
+    <string name="unknown_data">Unknown</string>
+    <string name="launch_app">Запустить</string>
 </resources>

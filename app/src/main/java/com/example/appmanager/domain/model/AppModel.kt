@@ -19,7 +19,7 @@ data class AppModel(
         fun createTestModel(
             name: String = "Test App",
             packageName: String = "com.example.test",
-            version: String? = "1.0.0",
+            version: String = "1.0.0",
             icon: Drawable = mockIcon,
             checkSum: String = "sha256_test_hash"
         ) = AppModel(
