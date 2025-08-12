@@ -171,9 +171,11 @@ fun AppDetails(appInfo: AppModel, onButtonClick: () -> Unit) {
                 textAlign = TextAlign.Center
             )
 
-            Button(onClick = onButtonClick, modifier = Modifier
-                .fillMaxWidth()
-                .padding(32.dp)) {
+            Button(
+                onClick = onButtonClick, modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(32.dp)
+            ) {
                 Text(stringResource(R.string.launch_app))
             }
         }

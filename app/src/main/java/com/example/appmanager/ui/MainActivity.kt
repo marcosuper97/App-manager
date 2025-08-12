@@ -25,16 +25,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun AppNavigation(){
+fun AppNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "mainScreen"){
-        composable("mainScreen"){
+    NavHost(navController = navController, startDestination = "mainScreen") {
+        composable("mainScreen") {
             MainScreen(navController)
         }
 
-        composable("detailsScreen/{packageName}"){ backStackEntry ->
+        composable("detailsScreen/{packageName}") { backStackEntry ->
             val packageName = backStackEntry.arguments?.getString("packageName")
-            AppDetailsScreen(packageName,navController)
+            AppDetailsScreen(packageName, navController)
         }
 
     }
