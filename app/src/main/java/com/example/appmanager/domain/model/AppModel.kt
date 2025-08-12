@@ -7,5 +7,5 @@ data class AppModel(
     val packageName: String,
     val version: String?,
     val icon: Drawable,
-    val sourceDir: String
+    val checkSum: String
 )
