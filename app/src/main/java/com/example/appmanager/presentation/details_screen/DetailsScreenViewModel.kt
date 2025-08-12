@@ -1,6 +1,5 @@
 package com.example.appmanager.presentation.details_screen
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appmanager.domain.api.AppDetailsInteractor
@@ -20,7 +19,7 @@ class DetailsScreenViewModel(
             val appData = appDetailsInteractor.getDetails(packageName)
             if (appData != null) {
                 _screenState.value = DetailsScreenState.Content(appData)
-            } else Log.d("ОШИБКА", "VAIVAIVAI")
+            }
         }
     }
 
