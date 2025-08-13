@@ -36,7 +36,20 @@ class AppsRepositoryImpl(
 
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-                trySend(installedApplications.map { it.mapToPreviewModel() })
+                if (intent == null) return
+
+                val action = intent.action
+                val packageUri = intent.data
+                val packageName = packageUri?.schemeSpecificPart
+
+                if (action == Intent.ACTION_PACKAGE_REMOVED && packageName != null) {
+                    val updatedApps = installedApplications
+                        .filter { it.packageName != packageName }
+                        .map { it.mapToPreviewModel() }
+                    trySend(updatedApps)
+                } else if (action == Intent.ACTION_PACKAGE_ADDED) {
+                    trySend(installedApplications.map { it.mapToPreviewModel() })
+                }
             }
         }
 
