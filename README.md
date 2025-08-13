@@ -11,6 +11,7 @@
 
 <img src="https://github.com/user-attachments/assets/51d1fd13-e117-4f3c-b801-b9bc33f7cafc" alt="Screenshot 1" width="220"/>
 <img src="https://github.com/user-attachments/assets/1f2cb311-6640-4567-9eaa-1ccacfb0fcb1" alt="Screenshot 1" width="220"/>
+<img src="https://github.com/user-attachments/assets/b27ea74d-1648-4dda-9881-98cb38056347" alt="Screenshot 1" width="220"/>
 
 ## Особенности
 
