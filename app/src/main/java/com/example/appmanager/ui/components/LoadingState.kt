@@ -21,6 +21,8 @@ import com.example.appmanager.ui.theme.AppTypography
 import com.example.appmanager.ui.theme.displayFontFamily
 import kotlinx.coroutines.delay
 
+private const val DELAY_SWAP = 700L
+
 @Composable
 fun LoadingState() {
     val frazes = listOf(
@@ -31,7 +33,7 @@ fun LoadingState() {
     var currentPhraseIndex by remember { mutableStateOf(0) }
     LaunchedEffect(Unit) {
         while (true) {
-            delay(700L) // пауза 2 секунды
+            delay(DELAY_SWAP)
             currentPhraseIndex = (currentPhraseIndex + 1) % frazes.size
         }
     }
