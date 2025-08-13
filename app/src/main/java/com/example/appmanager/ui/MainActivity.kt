@@ -32,9 +32,9 @@ fun AppNavigation() {
             MainScreen(navController)
         }
 
-        composable("detailsScreen/{packageName}") { backStackEntry ->
-            val packageName = backStackEntry.arguments?.getString("packageName")
-            AppDetailsScreen(packageName, navController)
+        composable("detailsScreen/{name}") { backStackEntry ->
+            val name = backStackEntry.arguments?.getString("name")
+            AppDetailsScreen(name, navController)
         }
 
     }

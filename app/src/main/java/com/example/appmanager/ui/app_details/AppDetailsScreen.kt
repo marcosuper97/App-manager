@@ -55,10 +55,10 @@ import org.koin.core.parameter.parametersOf
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDetailsScreen(
-    packageName: String?,
+    name: String?,
     navController: NavController,
     viewModel: DetailsScreenViewModel = koinViewModel {
-        parametersOf(packageName)
+        parametersOf(name)
     }
 ) {
     val scope = rememberCoroutineScope()
