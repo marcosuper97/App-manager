@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.appmanager.R
-import com.example.appmanager.domain.model.AppModel
+import com.example.appmanager.domain.model.AppPreviewModel
 import com.example.appmanager.presentation.main_screen.MainScreenState
 import com.example.appmanager.presentation.main_screen.MainScreenViewModel
 import com.example.appmanager.ui.components.LoadingState
@@ -38,9 +38,9 @@ fun MainScreen(
     viewModel: MainScreenViewModel = koinViewModel()
 ) {
     val scope = rememberCoroutineScope()
-    val onCardClick: (String) -> Unit = { packageName ->
+    val onCardClick: (String) -> Unit = { name ->
         scope.launch {
-            navController.navigate("detailsScreen/$packageName")
+            navController.navigate("detailsScreen/$name")
         }
     }
     val state by viewModel.screenState.collectAsStateWithLifecycle()
@@ -87,7 +87,7 @@ fun MainScreen(
 
 @Composable
 fun ContentState(
-    apps: List<AppModel>,
+    apps: List<AppPreviewModel>,
     onCardClick: (String) -> Unit
 ) {
     LazyColumn(
@@ -99,7 +99,7 @@ fun ContentState(
                 appInfo = app,
                 modifier = Modifier.clickable(
                     onClick = {
-                        onCardClick(app.packageName)
+                        onCardClick(app.name)
                     }
                 )
             )

@@ -6,8 +6,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
 import com.example.appmanager.domain.api.AppsRepository
 import com.example.appmanager.domain.model.AppModel
+import com.example.appmanager.domain.model.AppPreviewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.channels.awaitClose
@@ -23,12 +25,18 @@ class AppsRepositoryImpl(
     private val context: Context
 ) : AppsRepository {
 
+    override val installedApplications: List<ApplicationInfo> =
+        packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+            .filter { appInfo ->
+                (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
+            }
+
     private val appsFlow = callbackFlow {
-        trySend(fetchApplicationInfo().map { it.mapToModel() })
+        trySend(installedApplications.map { it.mapToPreviewModel() })
 
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-                trySend(fetchApplicationInfo().map { it.mapToModel() })
+                trySend(installedApplications.map { it.mapToPreviewModel() })
             }
         }
 
@@ -38,7 +46,12 @@ class AppsRepositoryImpl(
             addDataScheme("package")
         }
 
-        context.registerReceiver(receiver, filter)
+        ContextCompat.registerReceiver(
+            context,
+            receiver,
+            filter,
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
 
         awaitClose {
             context.unregisterReceiver(receiver)
@@ -49,12 +62,6 @@ class AppsRepositoryImpl(
         replay = 1
     )
 
-    private fun fetchApplicationInfo(): List<ApplicationInfo> {
-        return packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-            .filter { appInfo ->
-                (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
-            }
-    }
 
     private fun ApplicationInfo.mapToModel(): AppModel {
         return AppModel(
@@ -65,6 +72,16 @@ class AppsRepositoryImpl(
             version = getPackageVersion(),
             icon = loadIcon(packageManager),
             checkSum = calcChecksum(sourceDir, SHA_256)
+        )
+    }
+
+    private fun ApplicationInfo.mapToPreviewModel(): AppPreviewModel {
+        return AppPreviewModel(
+            name = packageManager
+                .getApplicationLabel(this)
+                .toString(),
+            version = getPackageVersion(),
+            icon = loadIcon(packageManager),
         )
     }
 
@@ -88,7 +105,14 @@ class AppsRepositoryImpl(
         return digest.digest().joinToString("") { "%02x".format(it) }
     }
 
-    override fun getInstalledApplications(): Flow<List<AppModel>> = appsFlow
+    override fun getInstalledApplications(): Flow<List<AppPreviewModel>> = appsFlow
+
+    override fun getAppDetails(name: String): AppModel? {
+        return installedApplications.find { appInfo ->
+            val appLabel = packageManager.getApplicationLabel(appInfo).toString()
+            appLabel.equals(name, ignoreCase = true)
+        }?.mapToModel()
+    }
 
     companion object {
         private const val BUFFER_SIZE = 8192
