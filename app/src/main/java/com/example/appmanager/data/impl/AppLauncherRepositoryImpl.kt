@@ -13,8 +13,6 @@ class AppLauncherRepositoryImpl(
         val intent = packageManager.getLaunchIntentForPackage(packageName)
         if (intent != null) {
             context.startActivity(intent)
-        } else {
-            // Обработка, если приложение не установлено
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.example.appmanager.domain.impl
 
-import android.util.Log
 import com.example.appmanager.domain.api.AppDetailsInteractor
 import com.example.appmanager.domain.api.AppLauncherRepository
 import com.example.appmanager.domain.api.AppsRepository
@@ -10,12 +9,13 @@ class AppDetailsInteractorImpl(
     private val appsRepository: AppsRepository,
     private val appLauncherRepository: AppLauncherRepository
 ) : AppDetailsInteractor {
+    private var appDetails: AppModel? = null
     override suspend fun getDetails(name: String): AppModel? {
-        val app = appsRepository.getAppDetails(name)
-        return app
+        appDetails = appsRepository.getAppDetails(name)
+        return appDetails
     }
 
-    override fun launchApp(packageName: String) {
-        appLauncherRepository.launchApp(packageName)
+    override fun launchApp() {
+        appDetails?.let { appLauncherRepository.launchApp(appDetails!!.packageName) }
     }
 }

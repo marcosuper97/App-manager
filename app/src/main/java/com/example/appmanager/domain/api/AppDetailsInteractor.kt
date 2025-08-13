@@ -4,5 +4,5 @@ import com.example.appmanager.domain.model.AppModel
 
 interface AppDetailsInteractor {
     suspend fun getDetails(name: String): AppModel?
-    fun launchApp(packageName: String)
+    fun launchApp()
 }
