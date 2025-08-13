@@ -25,7 +25,7 @@ class DetailsScreenViewModel(
 
     fun launchApp() {
         viewModelScope.launch {
-            appDetailsInteractor.launchApp(packageName)
+            appDetailsInteractor.launchApp()
         }
     }
 }
