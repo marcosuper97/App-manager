@@ -71,7 +71,7 @@ class AppsRepositoryImpl(
         }
     }.shareIn(
         scope = CoroutineScope(SupervisorJob()),
-        started = SharingStarted.WhileSubscribed(5000),
+        started = SharingStarted.WhileSubscribed(SUBSCRIPTION_TIMEOUT_MS),
         replay = 1
     )
 
@@ -130,5 +130,6 @@ class AppsRepositoryImpl(
     companion object {
         private const val BUFFER_SIZE = 8192
         private const val SHA_256 = "SHA-256"
+        private const val SUBSCRIPTION_TIMEOUT_MS = 5000L
     }
 }

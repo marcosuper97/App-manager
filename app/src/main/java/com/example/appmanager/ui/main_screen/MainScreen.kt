@@ -31,6 +31,8 @@ import com.example.appmanager.ui.components.LoadingState
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
+private const val ANIM_DURATION = 1500
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -64,7 +66,7 @@ fun MainScreen(
                     )
                     Crossfade(
                         targetState = state,
-                        animationSpec = tween(1500)
+                        animationSpec = tween(ANIM_DURATION)
                     ) { currentState ->
                         when (currentState) {
                             is MainScreenState.Content -> {
