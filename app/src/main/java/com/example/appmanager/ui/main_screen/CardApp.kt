@@ -1,7 +1,5 @@
 package com.example.appmanager.ui.main_screen
 
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
@@ -21,17 +19,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.appmanager.domain.model.AppModel
-import com.example.appmanager.ui.theme.AppManagerTheme
+import com.example.appmanager.domain.model.AppPreviewModel
 import com.example.appmanager.ui.theme.AppTypography
 import com.example.appmanager.util.toBitmap
 
 @Composable
 fun AppCard(
     modifier: Modifier = Modifier,
-    appInfo: AppModel,
+    appInfo: AppPreviewModel,
 ) {
     OutlinedCard(
         modifier
@@ -66,21 +62,5 @@ fun AppCard(
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = false, uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun CardPreviewNight() {
-    AppManagerTheme {
-        AppCard(appInfo = AppModel.createTestModel())
-    }
-}
-
-@Preview(showBackground = false, uiMode = UI_MODE_NIGHT_NO)
-@Composable
-fun CardPreviewDay() {
-    AppManagerTheme {
-        AppCard(appInfo = AppModel.createTestModel())
     }
 }
