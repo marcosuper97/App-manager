@@ -52,6 +52,8 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
+private const val ANIM_DURATION = 1500
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDetailsScreen(
@@ -91,7 +93,7 @@ fun AppDetailsScreen(
             ) {
                 Crossfade(
                     targetState = state,
-                    animationSpec = tween(1500)
+                    animationSpec = tween(ANIM_DURATION)
                 ) { currentState ->
                     when (currentState) {
                         is DetailsScreenState.Content -> {
